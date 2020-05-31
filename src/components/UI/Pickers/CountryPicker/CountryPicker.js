@@ -12,7 +12,6 @@ const CountryPicker = (props) => {
               name="country"
               required
               select
-              autoComplete
               fullWidth
               label="Pais"
               value={props.value}

@@ -11,7 +11,6 @@ const AllergyPicker = React.memo((props) => {
               name="allergy"
               required
               select
-              autoComplete
               fullWidth
               label="Alergias"
               value={props.state}

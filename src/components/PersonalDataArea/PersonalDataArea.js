@@ -71,7 +71,6 @@ const PersonalDataArea = React.memo((props) => {
                         fullWidth
                         id="direction"
                         label="Direccion"
-                        autoFocus
                         direction={props.direction} 
                         onChange={props.onChangeFnc}
                     />
@@ -98,6 +97,14 @@ const PersonalDataArea = React.memo((props) => {
             </Grid>
         </ExpansionArea>
     )
+}, (prevProps, nextProps) => {
+    return Object.keys(nextProps).reduce((currentResult, name) => {
+        if ( name == "onChangeFnc" || name == "onChangePrefixed") {
+            return currentResult
+        }
+        return currentResult && ( prevProps[name] === nextProps[name] )
+    }, true) 
+        
 })
 
 export default PersonalDataArea

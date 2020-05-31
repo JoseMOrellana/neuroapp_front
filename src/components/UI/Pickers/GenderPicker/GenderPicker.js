@@ -20,7 +20,6 @@ const GenderPicker = React.memo((props) => {
               name="gender"
               required
               select
-              autoComplete
               fullWidth
               label="Sexo"
               value={props.gender}

@@ -11,7 +11,6 @@ const MunicipalityPicker = React.memo((props) => {
               name="municipality"
               required
               select
-              autoComplete
               fullWidth
               label="Municipio"
               value={props.municipality}

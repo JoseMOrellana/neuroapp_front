@@ -3,15 +3,15 @@ import React from 'react';
 import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = (props) => (
-    <ul className="navbar-nav">
-        <NavigationItem link={"/"}>Home</NavigationItem>
-        <NavigationItem link={"/login"}>Login</NavigationItem>
-        <NavigationItem link={"/register"}>Register</NavigationItem>
-        <NavigationItem link={"/history"}>History</NavigationItem>
-        <NavigationItem link={"/profile"}>Profile</NavigationItem>
-        <NavigationItem link={"/pacientform"}>Pacient Form</NavigationItem>
-        <NavigationItem link={"/logout"}>Logout</NavigationItem>
-    </ul>
+    <React.Fragment>
+        <NavigationItem link={"/"} style={props.style}>Home</NavigationItem>
+        <NavigationItem link={"/login"} style={props.style}>Login</NavigationItem>
+        <NavigationItem link={"/register"} style={props.style}>Register</NavigationItem>
+        <NavigationItem link={"/history"} style={props.style}>History</NavigationItem>
+        <NavigationItem link={"/profile"} style={props.style}>Profile</NavigationItem>
+        <NavigationItem link={"/pacientform"} style={props.style}>Pacient Form</NavigationItem>
+        <NavigationItem link={"/logout"} style={props.style}>Logout</NavigationItem>
+    </React.Fragment>
 )
 
 export default navigationItems

@@ -1,15 +1,40 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 
+const useStyles = makeStyles((theme) => ({
+    subtitle: {
+      fontSize: 'subtitle',
+      color: 'white',
+      align: 'center',
+      justifyContent: 'center',
+      display: 'none',
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+      },
+    },
+    subtitlem: {
+        fontSize: 'subtitle',
+        color: 'black',
+        align: 'center',
+        justifyContent: 'center',
+      },
+  }));
 
-const navigationItem = (props) => (
-    <li className="nav-item">
-        <Link className="nav-link"
-            to={props.link}
-            exact={props.exact}>
-            {props.children}
+const NavigationItem = (props) => {
+    const classes = useStyles()
+
+    return (
+        <Link to={props.link}>
+            <MenuItem>
+                <Typography className={classes[props.style]}>
+                    {props.children}
+                </Typography>
+            </MenuItem>
         </Link>
-    </li>
-)
+    )
+}
 
-export default navigationItem
+export default NavigationItem

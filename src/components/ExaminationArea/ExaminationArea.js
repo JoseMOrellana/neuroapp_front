@@ -66,7 +66,6 @@ const ExaminationArea = React.memo((props) => {
                         rowsMax="10"
                         id="observations"
                         label="Observaciones"
-                        autoFocus
                         value={props.observations}
                         onChange={props.onChangeFnc}
                       />
@@ -93,7 +92,6 @@ const ExaminationArea = React.memo((props) => {
                         rowsMax="10"
                         id="fisical_exam"
                         label="Examen Fisico"
-                        autoFocus
                         value={props.fisical_exam}
                         onChange={props.onChangeFnc}
                       />
@@ -110,7 +108,6 @@ const ExaminationArea = React.memo((props) => {
                         rowsMax="10"
                         id="allergies"
                         label="Signos Cognitivos"
-                        autoFocus
                         value={props.cognitions}
                         onChange={props.onChangeFnc}
                       />
@@ -128,7 +125,6 @@ const ExaminationArea = React.memo((props) => {
                         rowsMax="10"
                         id="surgeries"
                         label="Intervenciones quirurgicas"
-                        autoFocus
                         value={props.surgeries}
                         onChange={props.onChangeFnc}
                       />
@@ -140,6 +136,14 @@ const ExaminationArea = React.memo((props) => {
       </ExpansionArea>
     </Grid>
   )
+}, (prevProps, nextProps) => {
+  return Object.keys(nextProps).reduce((currentResult, name) => {
+    if ( name == "onChangeFnc") {
+        return currentResult
+    }
+    return currentResult && ( prevProps[name] === nextProps[name] )
+}, true) 
+      
 })
 
 export default ExaminationArea

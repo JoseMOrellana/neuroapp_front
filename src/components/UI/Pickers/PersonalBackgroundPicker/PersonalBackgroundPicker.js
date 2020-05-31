@@ -11,7 +11,6 @@ const PersonalBackgroundPicker = React.memo((props) => {
               name="personal_background"
               required
               select
-              autoComplete
               fullWidth
               label="Ant. Personales"
               value={props.state}

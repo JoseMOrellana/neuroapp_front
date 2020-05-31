@@ -7,8 +7,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
-
+import { connect } from 'react-redux';
 
 const useStyles = theme => ({
   paper: {
@@ -40,15 +39,15 @@ class Profile extends Component {
             <tbody>
               <tr>
                 <td>Fist Name</td>
-                <td>{this.state.first_name}</td>
+                <td>{this.props.first_name}</td>
               </tr>
               <tr>
                 <td>Last Name</td>
-                <td>{this.state.last_name}</td>
+                <td>{this.props.last_name}</td>
               </tr>
               <tr>
                 <td>Email</td>
-                <td>{this.state.email}</td>
+                <td>{this.props.email}</td>
               </tr>
             </tbody>
           </table>
@@ -188,4 +187,10 @@ class Profile extends Component {
     );
    }
 };
-export default withStyles(useStyles)(Profile)
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  }
+}
+export default connect(mapStateToProps)(withStyles(useStyles)(Profile))

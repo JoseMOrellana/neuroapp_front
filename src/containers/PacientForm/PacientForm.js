@@ -48,11 +48,13 @@ const PacientForm = (props) => {
           props.onInitFormData();
         }
     })
-    const [formData, setFormData] = React.useState({
+    const [names, setNames] = React.useState({
       first_name: '',
       second_name: '',
       last_name: '',
       second_last_name: '',
+    })
+    const [personalData, setPersonalData] = React.useState({
       birth_date: Date.now(),
       gender: '',
       blood_type: '',
@@ -65,57 +67,84 @@ const PacientForm = (props) => {
       country: '',
       state: '',
       municipality: '',
+    })
+    const [detailsData, setDetailsData] = React.useState({
       description: '',
       personal_background: '',
       family_background: '',
       allergy: '',
       vaccine: '',
+    })
+    const [examinationData, setExaminationData] = React.useState({
       observations: '',
       medicine: '',
       fisical_exam: '',
       cognitions: '',
       surgeries: ''
     })
-    const handleChange = function(event) {
+    const handleNamesData = event => {
+      setNames({
+        ...names,
+        [event.target.name]: event.target.value
+      })
+    }
+    const handlePersonalData = event => {
       if(event.target) {
-        if(event.target.name === "country" && event.target.value != formData.country) {
+        if(event.target.name === "country" && event.target.value != personalData.country) {
           props.fetchStates(event.target.value)
-          setFormData({
-            ...formData,
+          setPersonalData({
+            ...personalData,
             "country": event.target.value,
             "state": '',
             "municipality": ''
           })
-        } else if (event.target.name === "state" && event.target.value != formData.state) {
+        } else if (event.target.name === "state" && event.target.value != personalData.state) {
           props.fetchMunicipalities(event.target.value)
-          setFormData({
-            ...formData,
+          setPersonalData({
+            ...personalData,
             "state": event.target.value,
             "municipality": ''
           })
         } else {
-          setFormData({
-            ...formData,
+          setPersonalData({
+            ...personalData,
             [event.target.name]: event.target.value
           })
         }
       } else {
-        setFormData({
-          ...formData,
+        setPersonalData({
+          ...personalData,
           "birth_date": event
         })
       }
-      
-    };
+    }
+    const handleDetailsData = event => {
+      setDetailsData({
+        ...detailsData,
+        [event.target.name]: event.target.value
+      })
+    }
+    const handleExaminationData = event => {
+      setExaminationData({
+        ...examinationData,
+        [event.target.name]: event.target.value
+      })
+    }
     const handlePrefixedInput = name => event => {
-      setFormData({
-        ...formData,
+      setPersonalData({
+        ...personalData,
         [name]: event.target.value
       })
     }
     const handleSubmit = (event) => {
       event.preventDefault()
-
+      
+      const formData = {
+        ...names,
+        ...personalData,
+        ...detailsData,
+        ...examinationData
+      }
       props.saveClinicalStory(formData, props.token)
     }
     const classes = useStyles()
@@ -128,52 +157,52 @@ const PacientForm = (props) => {
                 <h2>Historia Medica</h2>
                 <form onSubmit={handleSubmit}>
                     <NamesInputArea
-                      first_name={formData.first_name}
-                      second_name={formData.second_name}
-                      last_name={formData.last_name}
-                      second_last_name={formData.second_last_name}
-                      onChangeFnc={handleChange}
+                      first_name={names.first_name}
+                      second_name={names.second_name}
+                      last_name={names.last_name}
+                      second_last_name={names.second_last_name}
+                      onChangeFnc={handleNamesData}
                     />
                     <PersonalDataArea 
-                      birth_date={formData.birth_date}
-                      gender={formData.gender}
-                      blood_type={formData.blood_type}
-                      marital_status={formData.marital_status}
-                      documentType={formData.documentType}
-                      document={formData.document}
-                      telephone={formData.telephone}
-                      telephone2={formData.telephone2}
-                      direction={formData.direction}
-                      country={formData.country}
+                      birth_date={personalData.birth_date}
+                      gender={personalData.gender}
+                      blood_type={personalData.blood_type}
+                      marital_status={personalData.marital_status}
+                      documentType={personalData.documentType}
+                      document={personalData.document}
+                      telephone={personalData.telephone}
+                      telephone2={personalData.telephone2}
+                      direction={personalData.direction}
+                      country={personalData.country}
                       countriesList={props.countryData}
-                      state={formData.state}
+                      state={personalData.state}
                       statesList={props.stateData}
-                      municipality={formData.municipality}
+                      municipality={personalData.municipality}
                       municipalitiesList={props.municipalityData}
-                      onChangeFnc={handleChange}
+                      onChangeFnc={handlePersonalData}
                       onChangePrefixed={handlePrefixedInput}
                     />
                     <Typography variant="h6" color="initial">Detalles</Typography>
                     <DetailsArea 
-                      description={formData.description}
-                      personal_background={formData.personal_background}
+                      description={detailsData.description}
+                      personal_background={detailsData.personal_background}
                       personalBackgroundList={props.personalBackgroundData}
-                      family_background={formData.family_background}
+                      family_background={detailsData.family_background}
                       familyBackgroundList={props.familyBackgroundData}
-                      allergy={formData.allergy}
+                      allergy={detailsData.allergy}
                       allergyList={props.allergyData}
-                      vaccine={formData.vaccine}
+                      vaccine={detailsData.vaccine}
                       vaccineList={props.vaccineData}
-                      onChangeFnc={handleChange}
+                      onChangeFnc={handleDetailsData}
                     />
                     <ExaminationArea
-                      observations={props.observations}
-                      medicine={props.medicine}
+                      observations={examinationData.observations}
+                      medicine={examinationData.medicine}
                       medicineList={props.medicineData}
-                      fisical_exam={props.fisical_exam}
-                      cognitions={props.cognitions}
-                      surgeries={props.surgeries}
-                      onChangeFnc={handleChange}
+                      fisical_exam={examinationData.fisical_exam}
+                      cognitions={examinationData.cognitions}
+                      surgeries={examinationData.surgeries}
+                      onChangeFnc={handleExaminationData}
                     />
                     <Button
                       type="submit"

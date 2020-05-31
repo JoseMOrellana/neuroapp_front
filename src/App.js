@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import Navbar from './components/Navigation/Navbar/Navbar'
+import MenuAppBar from './components/Navigation/Navbar/Navbar'
 import Landing from './containers/Landing/Landing'
 import Login from './containers/Auth/Login/Login'
 import Logout from './containers/Auth/Logout'
@@ -26,7 +26,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Navbar />
+          {/* <Navbar /> */}
+          <MenuAppBar isAuthenticated={this.props.isAuthenticated}/>
           <Route exact path="/" component={Landing} />
           <div className="container">
             <Route exact path="/register" component={Register} />
@@ -44,7 +45,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    userId: state.auth.user?.id
+    isAuthenticated: state.auth.user != null
   }
 }
 

@@ -11,7 +11,6 @@ const StatePicker = React.memo((props) => {
               name="state"
               required
               select
-              autoComplete
               fullWidth
               label="Estado"
               value={props.state}

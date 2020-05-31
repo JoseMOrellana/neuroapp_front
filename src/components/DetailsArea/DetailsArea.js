@@ -57,7 +57,6 @@ const DetailsArea = React.memo((props) => {
                 <TabPanel value={tab1value} index={0} dir={theme.direction}>                  
                     <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                       <TextField
-                        autoComplete=""
                         name="description"
                         variant="outlined"
                         required
@@ -66,7 +65,6 @@ const DetailsArea = React.memo((props) => {
                         rowsMax="10"
                         id="motivo_consulta"
                         label="Motivo de consulta"
-                        autoFocus
                         value={props.description}
                         onChange={props.onChangeFnc}
                       />
@@ -111,6 +109,14 @@ const DetailsArea = React.memo((props) => {
           </SwipeableViews>
             </Grid>
     )
+}, (prevProps, nextProps) => {
+  return Object.keys(nextProps).reduce((currentResult, name) => {
+    if ( name == "onChangeFnc") {
+        return currentResult
+    }
+    return currentResult && ( prevProps[name] === nextProps[name] )
+}, true) 
+      
 })
 
 export default DetailsArea

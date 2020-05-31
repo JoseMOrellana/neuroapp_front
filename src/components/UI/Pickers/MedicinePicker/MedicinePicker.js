@@ -11,7 +11,6 @@ const MedicinePicker = React.memo((props) => {
               name="medicine"
               required
               select
-              autoComplete
               fullWidth
               label="Medicinas"
               value={props.state}

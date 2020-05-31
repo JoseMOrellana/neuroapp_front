@@ -13,7 +13,6 @@ const NamesInputArea = React.memo((props) => (
                 fullWidth
                 id="first_name"
                 label="First Name"
-                autoFocus
                 value={props.first_name}
                 onChange={props.onChangeFnc}
                 />
@@ -27,7 +26,6 @@ const NamesInputArea = React.memo((props) => (
                 fullWidth
                 id="second_name"
                 label="Segundo Nombre"
-                autoFocus
                 value={props.second_name}
                 onChange={props.onChangeFnc}
                  />
@@ -41,7 +39,6 @@ const NamesInputArea = React.memo((props) => (
                 fullWidth
                 id="last_name"
                 label="Apellido"
-                autoFocus
                 value={props.last_name}
                 onChange={props.onChangeFnc}
                  />
@@ -55,12 +52,18 @@ const NamesInputArea = React.memo((props) => (
                 fullWidth
                 id="second_last_name"
                 label="Segundo Apellido"
-                autoFocus
                 value={props.second_last_name}
                 onChange={props.onChangeFnc}
                 />
         </Grid>
     </Grid>
-))
+), (prevProps, nextProps) => {
+    return Object.keys(nextProps).reduce((currentResult, name) => {
+        if ( name == "onChangeFnc") {
+            return currentResult
+        }
+        return currentResult && ( prevProps[name] === nextProps[name] )
+    }, true)        
+})
 
 export default NamesInputArea

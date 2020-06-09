@@ -10,6 +10,12 @@ import Register from './containers/Auth/Register/Register'
 import PostRegister from './containers/Auth/Register/PostRegister'
 import Profile from './containers/Profile/Profile'
 import PacientForm from './containers/PacientForm/PacientForm'
+import Adprofile from './containers/Admin/Adprofile'
+import Adusers from './containers/Admin/Adusers'
+import Adexams from './containers/Admin/Adexams'
+import Adant from './containers/Admin/Adant'
+import Admedicamentos from './containers/Admin/Admedicamentos'
+
 import * as actions from './store/actions/index';
 
 class App extends Component {
@@ -34,8 +40,13 @@ class App extends Component {
             <Route exact path="/registration-completed" component={PostRegister} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/Adprofile" component={Adprofile} />
             <Route exact path="/pacientform" component={PacientForm}/>
             <Route exact path="/logout" component={Logout}/>
+            <Route exact path="/Adusers" component={Adusers} />
+            <Route exact path="/Adexams" component={Adexams} />
+            <Route exact path="/Adant" component={Adant}/>
+            <Route exact path="/Adalergies" component ={Admedicamentos}/>
           </div>
         </div>
       </Router>

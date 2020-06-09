@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88.338" height="83.688" viewBox="0 0 88.338 83.688">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f35757"/>
+      <stop offset="0.234" stop-color="#d74d4d"/>
+      <stop offset="0.293" stop-color="#d04a4a"/>
+      <stop offset="1" stop-color="#7a2c2c"/>
+    </linearGradient>
+  </defs>
+  <path id="Icon_material-warning" data-name="Icon material-warning" class="cls-1" d="M1.5,86.688H89.838L45.669,3ZM49.684,73.474H41.653V64.664h8.031Zm0-17.618H41.653V38.237h8.031Z" transform="translate(-1.5 -3)"/>
+</svg>

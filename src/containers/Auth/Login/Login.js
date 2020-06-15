@@ -90,7 +90,7 @@ class Login extends Component {
                   variant="outlined"
                   required
                   fullWidth
-                  autoComplete="string"
+                  autoComplete="true"
                   autoFocus
                   placeholder="Correo electronico"
                   error={this.props.error}
@@ -108,8 +108,7 @@ class Login extends Component {
                   name="password"
                   variant="outlined"
                   required
-                  autoComplete
-                  autoFocus
+                  autoComplete='true'
                   fullWidth
                   placeholder="Ingrese su contraseña"
                   error={this.props.error}

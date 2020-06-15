@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     width: "30px",
     height: "30px",
-    viewBox: "0 0 100 100"
+    viewBox: "0 0 100 100",
   },
   table: {
     width: '100%',
@@ -31,52 +31,72 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function UserTable() {
+export default function MedTable() {
   const classes = useStyles(); 
+  const { useState } = React;
+  
+
+  const [data, setData] = useState([
+    { name: 'Acetaminofen', practive: 'Paracetamol', lab: 'Calox', presentation: 'Tabletas', administration:'Oral', created: '20/02/2020', description: 'text' },
+  ]);
+
   return (
     <div className={classes.root}>
-      <MaterialTable className={classes.table} 
-      title= {<Typography variant='h6' className={classes.title}>Administrador de usuarios</Typography>}
-      columns={[
         
+      <MaterialTable className={classes.table} 
+      title= {<Typography variant='h6' className={classes.title}>Medicamentos</Typography>}
+      columns={[        
         { title: 'Nombre', field: 'name' },
-        { title: 'Apellido', field: 'surname' },
-        { title: 'Correo', field: 'email'},
-        { title: 'Usuario', field: 'user'},
-        { title: 'Area', 
-          field: 'area', 
-          lookup: { 36: 'Neurologia', 98: 'Neurocirugia'}
-        },
-        { title: 'Medic ID', field: 'cmedico'},
+        { title: 'Comp Activo', field: 'practive' },
+        { title: 'Presentacion', field: 'presentation' },
+        { title: 'Laboratorio', field: 'lab' },        
+        { title: 'Administracion', field: 'administration' },        
         { title: 'Creado', field: 'created'},
         
       ]}
-      data={[
-        { name: 'Jose', surname: 'Orellana', email: 'jose.mom@gmail.com', user: 'Jose.mom',  area: 36, cmedico: '4009', created: '20/02/2020' },
-        { name: 'Fernando', surname: 'Martinez', email: 'ferujap', user: 'ferjmt',  area: 98, cmedico: '4010', created: '20/08/2020' },
+      data={data}
+      detailPanel={[
+        {
+          tooltip: 'Mostrar detalles',
+          render: rowData => {
+            return (
+              <div
+                style={{
+                  fontSize: 100,
+                  textAlign: 'center',
+                  color: 'white',
+                  backgroundColor: '#43A047',
+                }}
+              >
+                {rowData.description}
+              </div>
+            )
+          },
+        },
       ]}
       localization={{
         header: {
-            actions: 'Acciones'
+            actions: 'Estado'
         },
         body: {
-            emptyDataSourceMessage: 'No existen usuarios registrados',
+            emptyDataSourceMessage: 'No existen medicamentos registrados',
             filterRow: {
                 filterTooltip: 'Filtrar',
             },
+            addTooltip: 'Agregar'
         },        
         toolbar:{
           searchPlaceholder: 'Buscar', 
           exportName: 'Exportar'
         },
         pagination:{
-          labelRowsSelect: 'Columnas',
+          labelRowsSelect: 'Filas',
           labelDisplayedRows: '{from}-{to} de {count}',
-          labelRowsPerPage: '10',
           firstTooltip: 'Inicio',
           lastTooltip: 'Final',
           nextTooltip: 'Siguiente pagina',
           previousTooltip: 'Pagina anterior'
+          
         },
     }}
       actions={[
@@ -85,24 +105,18 @@ export default function UserTable() {
           tooltip: 'Habilitado',
           onClick: (event, rowData) => alert("You saved " + rowData.name)
         },
-        rowData => ({
-          icon: ()=> <War className= {classes.icon}/>,
-          tooltip: 'Inhabilitar',
-        }),        
+              
       ]}
       options={{
         headerStyle: {
           backgroundColor: '#01579b',
           color: '#FFF'
         },
-        cellStyle: {
-          backgroundColor: '#EEE',
-        },
-        actionsCellStyle: {
-          backgroundColor: '#EEE'
-        },
         filterCellStyle: {
           backgroundColor: '#1111'
+        },
+        detailPanelStyle: {
+            backgroundColor: '#EEE',
         },
         searchFieldStyle: {
           backgroundColor: '#91C5D3', 
@@ -110,11 +124,8 @@ export default function UserTable() {
         },
         searchFieldVariant: 'outlined',
         actionsColumnIndex: -1,
-        exportButton: true,
-        exportCsv: (columns, data) => {
-          alert('You should develop a code to export ' + data.length + ' rows');
-        },
-        pageSize: '10',
+        exportButton: false,
+        pageSize: 10,
         pageSizeOptions: [10, 15, 20],       
       }}
     />

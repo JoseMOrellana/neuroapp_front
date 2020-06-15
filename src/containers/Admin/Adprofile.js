@@ -11,8 +11,9 @@ import { connect } from 'react-redux';
 
 const useStyles = theme => ({
   paper: {
-    //marginTop: theme.spacing(2),
-    display: 'flex',
+    marginTop: theme.spacing(8),
+    marginLeft: theme.spacing(8),
+    display: 'flex-end',
     flexDirection: 'column',
     width: '15rem',
   },
@@ -24,7 +25,7 @@ const useStyles = theme => ({
     color: '',
   },
   centro: {
-    minHeight:"95vh"
+    minHeight:"90vh"
   }
 })
 
@@ -69,7 +70,7 @@ class Profile extends Component {
                       image={require("../../img/prescription.svg")}
                       
                       title="Historias"
-                      onClick={this.routeChange}          
+                      onClick={event =>  window.location.href='/Adexams'}          
                     />
                     <CardActions>
                     <Button color="secondary" variant="contained" fullWidth>
@@ -80,7 +81,7 @@ class Profile extends Component {
                 </Card>
               </Paper>
           </Grid>
-          <Grid item xl={4} lg={4} md={4} sm={6} xs={11} >
+          <Grid item xl={4} lg={4} md={4} sm={6} xs={12} >
             <Paper className={classes.paper}>
               <Card>
                   <CardActionArea className={classes.card}>
@@ -91,11 +92,77 @@ class Profile extends Component {
                       image={require("../../img/adminpil.svg")}
                       
                       title="Investigacion"
-                      onClick={this.routeChange}          
+                      onClick={event =>  window.location.href='/Admedicamentos'}          
                     />
                     <CardActions>
                     <Button color="secondary" variant="contained" fullWidth>
                       Admin Medicamentos
+                    </Button>
+                  </CardActions>
+                  </CardActionArea>
+                </Card>
+              </Paper>
+          </Grid>
+          <Grid item xl={4} lg={4} md={4} sm={6} xs={12} >
+            <Paper className={classes.paper}>
+              <Card>
+                  <CardActionArea className={classes.card}>
+                    <CardMedia
+                      className="ccalendari"
+                      component="img"
+                      alt="Citas"                    
+                      image={require("../../img/adminpil.svg")}
+                      
+                      title="Investigacion"
+                      onClick={event =>  window.location.href='/Adalergies'}          
+                    />
+                    <CardActions>
+                    <Button color="secondary" variant="contained" fullWidth>
+                      Administrar Alergias
+                    </Button>
+                  </CardActions>
+                  </CardActionArea>
+                </Card>
+              </Paper>
+          </Grid>
+          <Grid item xl={4} lg={4} md={4} sm={6} xs={12} >
+            <Paper className={classes.paper}>
+              <Card>
+                  <CardActionArea className={classes.card}>
+                    <CardMedia
+                      className="Adant"
+                      component="img"
+                      alt="Administrar Antecedentes"                    
+                      image={require("../../img/adminpil.svg")}
+                      
+                      title="Administrar Antecedentes"
+                      onClick={event =>  window.location.href='/Adant'}          
+                    />
+                    <CardActions>
+                    <Button color="secondary" variant="contained" fullWidth>
+                      Admi Antecedentes
+                    </Button>
+                  </CardActions>
+                  </CardActionArea>
+                </Card>
+              </Paper>
+          </Grid>
+          <Grid item xl={4} lg={4} md={4} sm={6} xs={12} >
+            <Paper className={classes.paper}>
+              <Card>
+                  <CardActionArea className={classes.card}>
+                    <CardMedia
+                      className="adnews"
+                      component="img"
+                      alt="Administrar Noticias"                    
+                      image={require("../../img/adminpil.svg")}
+                      
+                      title="Adnews"
+                      onClick={event =>  window.location.href='/Adnews'}          
+                    />
+                    <CardActions>
+                    <Button color="secondary" variant="contained" fullWidth>
+                      Administrar Noticias
                     </Button>
                   </CardActions>
                   </CardActionArea>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Typography, Grid, Button, Dialog, DialogActions,TextField, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { makeStyles, Typography, Button, Dialog, DialogActions,TextField, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import { ReactComponent as Check } from '../icons/check.svg';
 import { ReactComponent as War } from '../icons/warning.svg';
@@ -122,7 +122,7 @@ export default function NewsTable() {
         </DialogActions>
       </Dialog>
       <MaterialTable className={classes.table} 
-      title= {<Typography variant='h6' className={classes.title}>Administrador de antecedentes</Typography>}
+      title= {<Typography variant='h6' className={classes.title}>Administrador de Noticias</Typography>}
       columns={[
         
         { title: 'Nombre', field: 'name' },

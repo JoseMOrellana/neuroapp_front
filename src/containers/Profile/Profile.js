@@ -11,7 +11,8 @@ import { connect } from 'react-redux';
 
 const useStyles = theme => ({
   paper: {
-    //marginTop: theme.spacing(2),
+    marginTop: theme.spacing(8),
+    marginLeft: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     width: '15rem',
@@ -20,7 +21,7 @@ const useStyles = theme => ({
     position: 'center',
     marginTop: '10%',
     marginLeft: '8%',
-    maxHeight: '80vh'
+    minHeight: '90vh'
   }
 })
 
@@ -30,29 +31,6 @@ class Profile extends Component {
     const {classes} = this.props;
     return (
       <div container className="cont">
-        <div className="container">
-        <div className="jumbotron mt-5">
-          <div className="col-sm-8 mx-auto">
-            <h1 className="text-center">PROFILE</h1>
-          </div>
-          <table className="table col-md-6 mx-auto">
-            <tbody>
-              <tr>
-                <td>Fist Name</td>
-                <td>{this.props.first_name}</td>
-              </tr>
-              <tr>
-                <td>Last Name</td>
-                <td>{this.props.last_name}</td>
-              </tr>
-              <tr>
-                <td>Email</td>
-                <td>{this.props.email}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
         <Grid container spacing={10} justify="center">
           <Grid item xl={4} lg={4} md={4} sm={6} xs={11}  >
             <Paper className={classes.paper} >            
@@ -65,11 +43,11 @@ class Profile extends Component {
                       image={require("../../img/clinic.png")}
                       
                       title="Citas"
-                      onClick={event =>  window.location.href='/register'}          
+                      onClick={event =>  window.location.href='/pacientform'}          
                     />
                     <CardActions>
                     <Button color="secondary" variant="contained" fullWidth>
-                      Citas
+                      Nuevo Paciente
                     </Button>
                   </CardActions>
                   </CardActionArea>

@@ -8,12 +8,6 @@ const useStyles = makeStyles((theme) => ({
     subtitle: {
       fontSize: 'subtitle',
       color: 'white',
-      align: 'center',
-      justifyContent: 'center',
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
     },
     subtitlem: {
         fontSize: 'subtitle',

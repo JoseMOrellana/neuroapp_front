@@ -286,7 +286,6 @@ class Register extends Component {
                       type="submit"
                       fullWidth
                       variant="contained"
-                      color="primary"
                       className={classes.submit}
                     >
                       Registrarse

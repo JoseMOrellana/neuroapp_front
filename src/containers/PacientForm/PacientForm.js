@@ -70,9 +70,7 @@ const PacientForm = (props) => {
     })
     const [detailsData, setDetailsData] = React.useState({
       description: '',
-      personal_background: '',
-      family_background: '',
-      allergy: '',
+      background: '',
       vaccine: '',
     })
     const [examinationData, setExaminationData] = React.useState({
@@ -185,12 +183,8 @@ const PacientForm = (props) => {
                     <Typography variant="h6" color="initial">Detalles</Typography>
                     <DetailsArea 
                       description={detailsData.description}
-                      personal_background={detailsData.personal_background}
-                      personalBackgroundList={props.personalBackgroundData}
-                      family_background={detailsData.family_background}
-                      familyBackgroundList={props.familyBackgroundData}
-                      allergy={detailsData.allergy}
-                      allergyList={props.allergyData}
+                      background={detailsData.background}
+                      backgroundList={props.backgroundData}
                       vaccine={detailsData.vaccine}
                       vaccineList={props.vaccineData}
                       onChangeFnc={handleDetailsData}
@@ -223,8 +217,7 @@ const mapStateToProps = state => {
     countryData: state.formData.countries,
     stateData: state.formData.states,
     municipalityData: state.formData.municipalities,
-    personalBackgroundData: state.formData.personalBackgrounds,
-    familyBackgroundData: state.formData.familyBackgrounds,
+    backgroundData: state.formData.backgrounds,
     vaccineData: state.formData.vaccines,
     medicineData: state.formData.medicines,
     token: state.auth.token

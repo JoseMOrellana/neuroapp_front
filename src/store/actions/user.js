@@ -34,6 +34,7 @@ export const register = (user) => {
                 dispatch(registerSuccess(response.data.data))
             })
             .catch(err => {
+                console.log(err)
                 dispatch(registerFail(err.response.data.errors))
             })
     }

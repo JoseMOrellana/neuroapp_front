@@ -12,9 +12,7 @@ export const initFormDataSuccess = (formData) => {
     return {
         type: actionTypes.INIT_FORM_DATA_SUCCESS,
         countries: formData.countries,
-        personalBackgrounds: formData.personal_backgrounds,
-        familyBackgrounds: formData.family_backgrounds,
-        allergies: formData.allergies,
+        backgrounds: formData.backgrounds,
         vaccines: formData.vaccines,
         medicines: formData.medicines
     };

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import axios from '../../axios-instance';
 import { makeStyles, Typography, Button, Dialog, DialogActions,TextField, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import { ReactComponent as Check } from '../icons/check.svg';
@@ -32,11 +34,34 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NewsTable() {
+const  NewsTable = function(props) {
   const classes = useStyles(); 
   const { useState } = React;
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
+  const [news, setNews] = React.useState(null)
+  const [newOne, setNewOne] = React.useState({
+    title: '',
+    abstract: '',
+    link: '',
+    img_url: ''
+  })
+
+  const config = {
+    headers: { Authorization: "Bearer " + props.token }
+  }
+
+  React.useEffect(() => {
+    if (news === null) {
+      axios.get('news', config)
+        .then((response) => {
+          setNews(response.data.data)
+        })
+        .catch((err) => {
+
+        })
+    }
+  })
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -53,9 +78,27 @@ export default function NewsTable() {
     setOpen1(false);
   };
 
-  const [data, setData] = useState([
-    { name: 'Health', location: 'UK', description: 'text' },
-  ]);
+  const handleSubmit = () => {
+    axios.post('news', newOne, config)
+    .then((response) => {
+      console.log(response.data)
+    })
+    .catch((err) => {
+      console.log(err.data)
+    })
+  }
+
+  const changeNewOne = (e) => {
+    setNewOne({
+      ...newOne,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  let newsList = []
+  if (news != null) {
+    newsList = news
+  }
 
   return (
     <div className={classes.root}>
@@ -69,7 +112,10 @@ export default function NewsTable() {
             autoFocus
             margin="dense"
             id="api_name"
-            placeholder="Nombre del API"
+            name="title"
+            value={newOne.title}
+            onChange={changeNewOne}
+            placeholder="Titulo"
             type="text"
             fullWidth
             variant="outlined"
@@ -78,7 +124,38 @@ export default function NewsTable() {
             autoFocus
             margin="dense"
             id="api_address"
-            placeholder="Direccion"
+            name="abstract"
+            value={newOne.abstract}
+            onChange={changeNewOne}
+            placeholder="Resumen"
+            type="text"
+            fullWidth
+            multiline="true"
+            rowsMax={7}
+            variant="outlined"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="api_address"
+            name="link"
+            value={newOne.link}
+            onChange={changeNewOne}
+            placeholder="Link de noticia"
+            type="text"
+            fullWidth
+            multiline="true"
+            rowsMax={7}
+            variant="outlined"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="api_address"
+            name="img_url"
+            value={newOne.img_url}
+            onChange={changeNewOne}
+            placeholder="Link de imagen"
             type="text"
             fullWidth
             multiline="true"
@@ -87,7 +164,7 @@ export default function NewsTable() {
           />
         </DialogContent>
         <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleSubmit} color="primary">
             Agregar
           </Button>
           <Button onClick={handleClose} color="primary">
@@ -125,12 +202,12 @@ export default function NewsTable() {
       title= {<Typography variant='h6' className={classes.title}>Administrador de Noticias</Typography>}
       columns={[
         
-        { title: 'Nombre', field: 'name' },
-        { title: 'Ubicacion', field: 'location'},        
-        { title: 'Creado', field: 'created'},
+        { title: 'Titulo', field: 'title' },
+        { title: 'Resumen', field: 'abstract'},        
+        { title: 'Enlace', field: 'link'},
         
       ]}
-      data={data}
+      data={newsList}
       detailPanel={[
         {
           tooltip: 'Show Name',
@@ -217,3 +294,16 @@ export default function NewsTable() {
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsTable)

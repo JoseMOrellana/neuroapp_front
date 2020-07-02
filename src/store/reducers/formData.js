@@ -5,9 +5,7 @@ const initialState = {
     countries: [],
     states: [],
     municipalities: [],
-    personalBackgrounds: [],
-    familyBackgrounds: [],
-    allergies: [],
+    backgrounds: [],
     vaccines: [],
     medicines: [],
     error: false,
@@ -28,9 +26,7 @@ const initFormDataFail = (state, action) => {
 const initFormDataSuccess = (state, action) => {
     return updateObject(state, { 
         countries: action.countries,
-        personalBackgrounds: action.personalBackgrounds,
-        familyBackgrounds: action.familyBackgrounds,
-        allergies: action.allergies,
+        backgrounds: action.backgrounds,
         vaccines: action.vaccines,
         medicines: action.medicines
      })

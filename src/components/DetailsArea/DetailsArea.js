@@ -45,7 +45,6 @@ const DetailsArea = React.memo((props) => {
                     <Tab label="Motivo de consulta" {...a11yProps(0)} />
                     <Tab label="Ant. personales" {...a11yProps(1)} />
                     <Tab label="Ant. familiares" {...a11yProps(2)} />
-                    <Tab label="Alergias" {...a11yProps(3)} />
                     <Tab label="Vacunas" {...a11yProps(4)} />
                 </Tabs>
             </AppBar>
@@ -73,8 +72,8 @@ const DetailsArea = React.memo((props) => {
             <TabPanel value={tab1value} index={1} dir={theme.direction}>
             <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                       <PersonalBackgroundPicker 
-                        value={props.personal_background}
-                        valuesList={props.personalBackgroundList}
+                        value={props.background}
+                        valuesList={props.backgroundList}
                         onChangeFnc={props.onChangeFnc}
                       />
                     </Grid>
@@ -82,17 +81,8 @@ const DetailsArea = React.memo((props) => {
             <TabPanel value={tab1value} index={2} dir={theme.direction}>
               <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                       <FamilyBackgroundPicker
-                        value={props.family_background}
-                        valuesList={props.familyBackgroundList}
-                        onChangeFnc={props.onChangeFnc}
-                      />
-                    </Grid>
-            </TabPanel>
-            <TabPanel value={tab1value} index={3} dir={theme.direction}>
-                <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                      <AllergyPicker
-                        value={props.allergy}
-                        valuesList={props.allergyList}
+                        value={props.background}
+                        valuesList={props.backgroundList}
                         onChangeFnc={props.onChangeFnc}
                       />
                     </Grid>

@@ -27,9 +27,7 @@ export const register = (user) => {
         dispatch(registerStart());
         const newUser = {
             ...user,
-            role: 'doctor',
-            gender: 'male',
-            birth_date: '1984-04-13'
+            role: 'doctor'
         }
         axios.post('register', newUser)
             .then(response => {

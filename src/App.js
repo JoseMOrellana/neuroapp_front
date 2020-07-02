@@ -64,7 +64,7 @@ class App extends Component {
             {/*<Route exact path="/Test" component ={Test}/>*/}
             <Route exact path="/Examsview" component ={Examsview}/>
             <Route exact path="/Patientsview" component ={Patientsview}/>
-            <Route exact path="/Patientview" component ={Patientview}/>
+            <Route exact path="/Patientview/:id" component ={Patientview}/>
             <Route exact path="/Histories" component ={Histories}/>
             <Route exact path="/Medsview" component ={Medsview}/>
             <Route exact path="/Investigation" component ={Investigation}/>

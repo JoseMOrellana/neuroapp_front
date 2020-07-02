@@ -225,7 +225,6 @@ const mapStateToProps = state => {
     municipalityData: state.formData.municipalities,
     personalBackgroundData: state.formData.personalBackgrounds,
     familyBackgroundData: state.formData.familyBackgrounds,
-    allergyData: state.formData.allergies,
     vaccineData: state.formData.vaccines,
     medicineData: state.formData.medicines,
     token: state.auth.token
